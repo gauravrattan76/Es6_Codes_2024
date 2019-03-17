@@ -1,0 +1,106 @@
+Callbacks-
+___________________________________________
+
+For JavaScript to know when an asynchronous operation has a result (a result being either returned data or an error that occurred during the operation), it points to a function that will be executed once that result is ready. This function is what we call a “callback function”. Meanwhile, JavaScript continues its normal execution of code. This is why frameworks that does external calls of different kinds have APIs where you provide callback functions to be executed later on.
+
+Registering event listeners in a browser with “addEventListener”, reading a files content with “fs.readFile” or registering a middleware in an express web server with “server.use” are examples of common APIs that uses callbacks.
+
+Here is an example of fetching data from an URL using a module called “request”:
+
+var request = require('request');
+request('http://localhost:3000/profile', function (error, response, body) {
+  console.log('error:', error); // Print the error if one occurred
+  console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
+  console.log('body:', body); // Print the HTML for the Google homepage.
+});
+
+
+
+
+
+const request = require(‘request’);
+function handleResponse(error, response, body){
+    if(error){
+        // Handle error.
+    }
+    else {
+        // Successful, do something with the result.
+    }
+}
+request('https://www.somepage.com', handleResponse);
+
+
+As you can see, “request” takes a function as its last argument. This function is not executed together with the code above. It is saved to be executed later once the underlying I/O operation of fetching data over HTTP(s) is done. The underlying HTTP(s) request is an asynchronous operation and does not block the execution of the rest of the JavaScript code. The callback function is put on a sort of queue called the “event loop” until it will be executed with a result from the request.
+
+
+____________________________________________
+
+callBackhell-
+
+
+const request = require(‘request’);
+let result;
+request('http://www.somepage.com', function (error, response, body) {
+    if(error){
+        // Handle error.
+    }
+    else {
+        result = body;
+    }
+});
+console.log(result);
+
+
+The last line will output “undefined” to the console because at the time that line is being executed, the callback has not been called. Even if the request were somehow to complete before the result variable is printed to the console (highly unlikely though), this code will still run to completion before the callback is executed anyway because that is the nature of the non-blocking I/O model in JavaScript.
+
+
+
+Callback Hell code-
+
+var request = require('request');
+var res;
+request('http://localhost:3000/profile', function (error, response, body) {
+  console.log('error:', error); // Print the error if one occurred
+  console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
+  console.log('body:', body); // Print the HTML for the Google homepage.
+  res = body;
+});
+
+console.log("callback Hell" + res);
+
+
+
+first gives undefined and the rest of the code.
+
+
+________________________________________________________
+
+So if we want to do a second request based on the result of a first one we have to do it inside the callback function of the first request because that is where the result will be available:
+
+request('http://www.somepage.com', function (firstError, firstResponse, firstBody) {
+    if(firstError){
+        // Handle error.
+    }
+    else {
+        request(`http://www.somepage.com/${firstBody.someValue}`, function (secondError, secondResponse, secondBody) {
+            if(secondError){
+                // Handle error.
+            }
+            else {
+                // Use secondBody for something
+            }
+        });
+    }
+});
+
+
+
+
+
+
+
+
+
+
+
+
