@@ -1,10 +1,20 @@
-var promise = new Promise(function (resolve, reject) {
-    // the function is executed automatically when the promise is constructed
-    // after 1 second signal that the job is done with the result "done!"
-    setTimeout(function () { return reject("we have a error"); }, 500);
+let cleanRoom = new Promise(function(resolve,reject)
+{
+    let clean = false;
+
+    if(clean === true)
+    {
+        resolve("The room has been cleaned");
+    }
+    else
+    {
+        reject("Room still requires cleaning");
+    }
 });
-promise.then(function (res) {
-    console.log(res);
-}, function (err) {
+
+cleanRoom.then(function(res){
+console.log(res);
+}).catch(function(err)
+{
     console.log(err);
-});
+})
