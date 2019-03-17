@@ -1,0 +1,33 @@
+Promises
+A promise is an object that wraps an asynchronous operation and notifies when it’s done. This sounds exactly like callbacks, but the important differences are in the usage of Promises. Instead of providing a callback, a promise has its own methods which you call to tell the promise what will happen when it is successful or when it fails. The methods a promise provides are “then(…)” for when a successful result is available and “catch(…)” for when something went wrong.
+
+There are lots of frameworks for creating and dealing with promises in JavaScript, but all of the examples below assumes that we are using native JavaScript promises as introduced in ES6.
+
+Using a promise this way looks like this:
+
+
+someAsyncOperation(someParams)
+.then(function(result){
+    // Do something with the result
+})
+.catch(function(error){
+    // Handle error
+});
+
+
+Instead of nesting callbacks inside callbacks inside callbacks, you chain .then() calls together making it more readable and easier to follow. Every .then() should either return a new Promise or just a value or object which will be passed to the next .then() in the chain. Another important thing to notice is that even though we are doing two different asynchronous requests we only have one .catch() where we handle our errors. That’s because any error that occurs in the Promise chain will stop further execution and an error will end up in the next .catch() in the chain.
+
+
+
+function getAsyncData(someValue){
+    return new Promise(function(resolve, reject){
+        getData(someValue, function(error, result){
+            if(error){
+                reject(error);
+            }
+            else{
+                resolve(result);
+            }
+        })
+    });
+}
