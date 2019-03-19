@@ -17,6 +17,29 @@ object1.item= "car";
 
 here you are changing a property value of old object.you are not assigning new object or array to old one.so it is pass by reference.
 
+
+// let a = {num:1};
+// let b = a;
+
+// a = {};
+// console.log(a);
+// console.log(b);
+
+let a = {num:1};
+let b = a;
+
+a.num = 23;
+console.log(a);
+console.log(b);
+
+
+
+
+
+
+
+
+
 Code
 
     function passVar(object1, object2, number1) {
@@ -45,3 +68,5 @@ Output: -
     laptop
     bike
     10
+    
+    
