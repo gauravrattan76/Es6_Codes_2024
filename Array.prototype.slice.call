@@ -1,0 +1,19 @@
+array.slice method-
+
+The slice()  method returns the shallow copy of the portion of an array into a new array object selected from beginning to end. Here in the result the end not included. The original array will not be modified. So it is a pure function.  The slice() method returns the selected elements in an array, as a new array object. The slice() method selects the elements starting at the given start argument, and ends at, but does not include, the given end argument.
+
+let namepartner = ['Pearson', 'Specter', 'Litt'];
+let suits = namepartner.slice(1, 2);
+
+console.log(suits);//gives spectre
+
+
+
+
+
+function list() {
+    return Array.prototype.slice.call(arguments);
+  }
+  
+  const list1 = list(1, 2, 3);
+  console.log(list1);
