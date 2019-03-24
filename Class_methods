@@ -1,0 +1,28 @@
+
+3 types of methods
+constructor methods
+static methods
+prototype methods
+
+**********************************
+class Employee { 
+    constructor(name) { //constructor method gets intiales when an object gets created
+
+        this.name = name;
+        console.log(this.name + 'from constructor');
+    }
+    static getname() { //static using static keyword can be accessed using the class name
+        console.log('from static methods')
+    }
+
+    greet() { //norma prootype methods
+
+        console.log('Its  a prototype method');
+    }
+
+}
+
+let p = new Employee('Gaurav Rattan');
+Employee.getname();
+p.greet();
+
