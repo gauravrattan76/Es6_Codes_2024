@@ -25,3 +25,4 @@ const bob = new Employee("Bob", 25, "male");
 
 console.log(alice.showInfo());
 console.log(bob.showInfo());
+console.log(Parent.prototype.showInfo.call(cInstance));// here we get the parent instance only
