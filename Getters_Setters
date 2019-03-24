@@ -1,0 +1,26 @@
+class Vehicle{
+    constructor(){
+
+    };
+
+    set vehiclenNumber(num)//we get a better control over the properties.
+    {
+        if(num <0 )
+        {
+            console.log("Vehicle number can not be negative");
+        }
+        else{
+            this.num = num;
+        }
+    }
+
+    get vehiclenNumber(){
+        return this.num;
+    }
+}
+
+let bike = new Vehicle();
+
+bike.vehiclenNumber = -244;
+
+console.log(bike.vehiclenNumber);
