@@ -1,0 +1,13 @@
+var colors = ["red","blue","green","black"];
+for(let col of colors)
+{
+    console.log(col);//here we get the actual data;
+}
+
+
+
+var colors = ["red","blue","green","black"];
+for(let col in colors)
+{
+    console.log(col);//here we get the index of the elemenst in the array.
+}
