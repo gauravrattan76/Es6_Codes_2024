@@ -1,0 +1,84 @@
+class baseClass{
+    constructor(name)
+    {
+        
+        console.log(name + " parent class constructor getting called");
+    }
+
+    greet(){
+        console.log("parent class method getting called");
+        return 10;
+    }
+}
+
+class childClass extends baseClass{
+    constructor(red)
+    {
+        super(red);//calling the parent constructor
+    }
+
+    greet(){
+        return super.greet();//calling the parent method
+    }
+}
+
+
+let c = new childClass("gaurav");
+console.log(c.greet());
+
+
+___________________________________________________________
+
+
+class baseClass{
+    constructor(name)
+    {
+        
+        console.log(name + " parent class constructor getting called");
+    }
+
+    greet(){
+        console.log("parent class method getting called");
+        return 10;
+    }
+}
+
+class childClass extends baseClass{
+    constructor(red)
+    {
+        console.log(red + " child class constructor");//if we dont call the parent constructor we will get the error must call the parent class constructor.
+        //super(red);
+    }
+
+    greet(){
+        return super.greet();
+    }
+}
+
+
+let c = new childClass("gaurav");
+console.log(c.greet());
+
+
+________________________________________________________________
+
+No constryctor overloading supported-
+
+
+What you want is called constructor overloading. This, and the more general case of function overloading, is not supported in ECMAScript.
+
+class childClass{
+constructor(){
+    console.log("non parametrisied constructor");
+}
+
+    constructor(red)
+    {
+        console.log(red + " child class constructor");
+    }
+
+   
+}
+
+
+let c = new childClass("gaurav");// we get the error that class may have only one constructor
