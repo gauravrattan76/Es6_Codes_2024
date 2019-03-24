@@ -1,0 +1,55 @@
+Rest Parameters, which represents an unknown number of parameters as an array in a function. It not only represents extra parameters as an array, it also solves many of the problems of the arguments object. Let us rewrite the above add function using the rest parameters.
+
+
+// function add(...param)
+// {
+//     for(let i =0;i<param.length-1;i++)
+//     {
+//         console.log(param[i]);
+//     }
+// }
+
+// add(1,2,3,4);
+
+function add(...param)
+{
+    for(let p of param)
+    {
+        console.log(p);
+    }
+
+}
+
+add(1,2,3,4);
+
+
+
+function add(num1, num2, ...theArgs){
+    console.log(num1);
+    console.log(num2);
+    console.log(theArgs.length);
+}
+var r = add(6,9,3,2);//num1 = 6.num 2 = 3 amd the theargs array gets 3,2
+var t = add(7,56,9);
+
+
+
+
+function add(num1, ...theArgs,num2){
+    console.log(num1);
+    console.log(num2);
+    console.log(theArgs.length);
+}
+In the above code listing, the rest parameter is not the last parameter, so JavaScript will throw an error. The rest parameter must be the last formal parameter.
+
+Destructuring rest parameters-
+
+
+function add(...[a,b,c]){
+    return a+b+c; 
+}
+var r = add(6);
+console.log(r);
+var t = add(7,56,9);
+console.log(t);
+For a first-time function call, a=6 , b= undefined, c = undefined will be assigned, and for the second function call, a=7, b=56, c=9 will be assigned. In this case, if you pass any extra parameter then that will be ignored in the function.
