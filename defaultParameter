@@ -1,0 +1,29 @@
+function foo(num1 =9) {
+    console.log(num1);
+}
+foo();
+
+here we get 9
+
+function foo(num1 =9) {
+    console.log(num1);
+}
+foo(34);//here we get 34
+
+______________________________
+
+if we pass undefined-
+
+function foo(num1 =9) {
+    console.log(num1);
+}
+foo(undefined);//still output will be 9
+
+_____________________________
+
+Default parameters are available to be used by later default parameters. Let us consider the code listed below:
+
+function foo(num1 = 9, num2 = num1 + 8){
+    console.log(num2);
+}
+foo();
