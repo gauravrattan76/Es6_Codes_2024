@@ -1,0 +1,70 @@
+Code for Call-
+_________________________________
+
+var obj = {num:2};
+
+var printSum = function(ab){
+
+  return this.num + ab;
+}
+
+
+console.log(printSum.call(obj,4));
+
+so with the call first we pass the name of the object and then function arguments.
+___________________________________________________________________________
+
+var obj = {num:2};
+
+var printSum = function(ab,cd){
+
+  return this.num + ab + cd;
+}
+
+
+console.log(printSum.call(obj,4,7));
+
+call attaches the function with the object..the first parameter needs to be the object.
+
+______________________________________________________________________________
+
+Apply-
+
+
+var obj = {num:2};
+
+var printSum = function(ab,cd){
+
+  return this.num + ab + cd;
+}
+
+var arr = [1,2];
+console.log(printSum.apply(obj,arr));
+
+
+Apply is same as call but the differene is that it takes the array as the second argument.
+
+
+_______________________________________________________________________________
+
+
+bind-
+
+var obj = {num:2};
+
+var printSum = function(ab,cd){
+
+  return this.num + ab + cd;
+}
+
+var arr = [1,2];
+
+var bnd = printSum.bind(obj);
+
+console.log(bnd(1,2));
+
+
+In bind we bind the object with the function and then we store it in a variable and call that variable for apssing the parameters.
+______________________________________________________________________________
+
+
