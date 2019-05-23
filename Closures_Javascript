@@ -1,0 +1,49 @@
+Lexical scoping-
+
+Variable defined out side the functio are accessable inside the function.
+
+var passed = 23;
+
+var addTo = function()
+{
+    var inner = 23;
+    return inner + passed;
+}
+
+console.log(addTo(passed));
+
+______________________________________________________
+
+var passed = 23;
+
+var addTo = function()
+{
+    var inner = 23;
+    return inner + passed;
+}
+
+console.log(addTo(passed));
+
+var passed = 67;//variable declarations are hoisted not the assigment
+
+
+console.log(addTo(passed));
+
+
+_____________________________________________________________
+
+Closures are nothing but function that preserve data//function inside a function that can presevre data of the outer function.-
+
+
+
+var addTo = function(passed)
+{
+    var add = function(inner){
+        console.log(passed + "bbbbb" + inner);
+       return passed + inner;
+    }
+    return add;
+}
+
+var innhold = addTo(23);//here we get the access to inner function which has the preserved data for the outer function.
+console.log(innhold(45));//here we make a call to the inner function with the predsevred saved data.
