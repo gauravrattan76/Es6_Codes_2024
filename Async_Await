@@ -1,0 +1,97 @@
+Messy code-
+
+
+console.log("customer 1 called");
+console.log("customer 2 called");
+
+
+
+var myPromise = new Promise(function(resolve,reject){
+    setTimeout(() => {
+        resolve("Hello Gaurav");
+    }, 3000);
+})
+
+var newProm = myPromise.then(function(res)
+{
+    console.log("we shoild go in?");
+    console.log(`This is for you ${res}`);
+    return new Promise(function(resolve,reject){
+        resolve("getting you popcorn");
+    })
+});
+
+newProm.then(function(resolve)
+{
+    console.log(`anser ${resolve}`);
+});
+3
+console.log("customer 3 called");
+console.log("customer 4 called");
+
+
+_______________________________________________
+
+
+Aync function code-
+
+console.log("customer 1 called");
+console.log("customer 2 called");
+
+
+var myFunc = async () => 'Hello Gaurav';//this is the async function which always return a promise
+
+myFunc().then((mess)=> console.log(mess));
+
+console.log("customer 3 called");
+console.log("customer 4 called");
+
+_______________________________________________
+
+
+async and await-
+
+
+console.log("customer 1 called");
+console.log("customer 2 called");
+
+
+
+var myFunc = async () => {
+    var mypromise = new Promise(function(resolve,reject){
+        setTimeout(() => {
+            resolve("wife finally aggress to go");
+        }, 2000);
+    });
+    console.log("Now shw wants some popcorn");
+
+    var promisePop = new Promise(function(resolve,reject){
+        resolve("Popcorns are here");
+    })
+
+   var thnkpop = await promisePop;
+   console.log(`this is = ${thnkpop}`);
+
+    var ticket = await mypromise;
+    return ticket;
+};
+
+myFunc().then((m) => console.log(m));
+
+console.log("customer 3 called");
+console.log("customer 4 called");
+
+____________________________________________
+
+Output-
+
+customer 1 called
+customer 2 called
+Now shw wants some popcorn
+customer 3 called
+customer 4 called
+this is = Popcorns are here
+wife finally aggress to go
+
+
+
