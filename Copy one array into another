@@ -1,0 +1,11 @@
+sourceArray = ["gaurv","redmi","nebula"];
+
+//var destinationArray = sourceArray.slice(); // Probably more idiomatic
+
+//console.log(destinationArray);
+// or
+// var destinationArray = sourceArray.concat();
+
+var destinationArray = Array.from(sourceArray);
+
+console.log(destinationArray);
