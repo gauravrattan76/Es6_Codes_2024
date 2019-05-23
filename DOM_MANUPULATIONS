@@ -1,0 +1,23 @@
+typeof(null)  object
+
+typeof(undefined)   undefined
+
+
+null + undefined = NAN
+
+thats we say null == undefined
+
+
+but it fails null === undefined as type od null is object and type of undefined in undefined.
+
+
+typeof([])
+"object"
+typeof({})
+"object"
+[] + []
+""
+[] + {}
+"[object Object]"
+{} + []
+0
