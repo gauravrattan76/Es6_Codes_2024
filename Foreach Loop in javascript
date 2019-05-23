@@ -1,0 +1,6 @@
+var numbers = [1,2,3,4,5,6,7];
+
+numbers.forEach(function(value,index,array)
+{
+console.log("Value" + value + "Index" + index+ "array" + array);
+})
