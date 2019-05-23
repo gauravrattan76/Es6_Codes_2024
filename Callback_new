@@ -1,0 +1,33 @@
+var x = function(){
+    return 23;
+}
+
+
+var print = function(callback)
+{
+    return callback();
+}
+
+console.log(print(x));
+
+_________________________________________________________
+
+var sum = function(a,b)
+{
+    return a +b;
+}
+
+var mul = function(a,b)
+{
+    return a * b;
+}
+
+var printsum = function(a,b,callback)
+{
+    return callback(a,b);
+}
+
+console.log(printsum(1,2,sum));
+
+
+_________________________________________________________
