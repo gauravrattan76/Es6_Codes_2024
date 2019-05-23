@@ -1,0 +1,20 @@
+var myPromise = new Promise(function(resolve,reject)//create a promise using the new promise keyword which takes a callback function with 2 arguments
+{
+ var isClean = false;
+ if(isClean)
+ {
+     resolve("The room is cleaned");
+ }
+ else{
+     reject("we still have to clean the room");
+ }
+
+});
+
+myPromise.then(function(res)
+{
+    console.log("The room is" + res);
+},function(rej)
+{
+    console.log("The room is " + rej)
+});
