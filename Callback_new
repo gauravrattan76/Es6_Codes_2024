@@ -31,3 +31,38 @@ console.log(printsum(1,2,sum));
 
 
 _________________________________________________________
+
+first(3,function(recval,err){
+    if(!err)
+    {
+        console.log(recval);
+        second(recval,function(recval,err){
+            if(!err)
+            {
+                console.log(recval);
+                third(recval,function(recval,err){
+                    if(!err)
+                    {
+                        console.log(recval);
+                    }
+                });
+            }
+        });
+    }
+});
+
+
+function first(value,callback)
+ {
+     callback(value + 2,false);
+ }
+
+ function second(value,callback)
+ {
+     callback(value + 2,false);
+ }
+
+ function third(value,callback)
+ {
+     callback(value + 2,false);
+ }
