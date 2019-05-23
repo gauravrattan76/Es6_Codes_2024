@@ -21,3 +21,12 @@ typeof({})
 "[object Object]"
 {} + []
 0
+
+
+___________________________________________________________________
+
+How to edit the content of the webpage
+
+document.body.contentediatble = true;
+
+__________________________________________________________________
