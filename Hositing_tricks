@@ -1,0 +1,34 @@
+Function declarations are hoisted always.
+
+console.log(red(1,2));
+
+function red(a,b)
+{
+    return a + b;
+}
+
+
+
+
+_______________________________________________
+
+var red;
+console.log(red);
+
+we get undefined as we have not defined any value
+
+_____________________________________________
+
+
+console.log(red);
+
+var red =56;//we get undefined error as the 
+
+________________________________________________
+
+
+console.log(red);
+let red =56;
+
+let is not defined error as let declarations are not hoisted
+_______________________________________________
