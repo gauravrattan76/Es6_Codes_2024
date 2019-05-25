@@ -1,0 +1,35 @@
+var object1 = {
+    name:"gaurav",
+    habit(){
+        return this.name;
+    }
+}
+
+var object2 = {
+    name:"reemdi",
+    habit(){
+        return this.name;
+    }
+}
+
+var red  = Object.assign(object1,object1);
+console.log(red);
+
+Output will be -- defintion for the ocjet 1 as we copy the data from object 1 into object2 so the data of the object 2 gets over written
+
+var object1 = {
+    name:"gaurav",
+    habit(){
+        return this.name;
+    }
+}
+
+var object2 = {
+    name:"reemdi",
+    habit(){
+        return this.name;
+    }
+}
+
+var red  = Object.assign({},object1);
+console.log(red);
