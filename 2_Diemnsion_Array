@@ -1,0 +1,85 @@
+var myArray = new Array(3);//create =s a array with 3 row
+
+for(let i =0;i < 3;i++)
+{
+    myArray[i] = new Array(3);//create 3 rows for every element
+}
+
+var start = 1;
+
+for(i =0;i < 3;i++)
+{
+    for(j=0;j<3;j++)
+    {
+        myArray[i][j]= start;
+        start += 1;
+
+    }
+}
+
+
+var myArray1 = new Array(3);
+
+for(let i =0;i < 3;i++)
+{
+    myArray1[i] = new Array(3);
+}
+
+var start1 = 9;
+
+for(i =0;i < 3;i++)
+{
+    for(j=0;j<3;j++)
+    {
+        myArray1[i][j]= start1;
+        start1 -= 1;
+
+ 
+    }
+}
+
+var myArray2 = new Array(3);
+
+for(let i =0;i < 3;i++)
+{
+    myArray2[i] = new Array(3);
+}
+
+
+for(i =0;i < 3;i++)
+{
+    for(j=0;j<3;j++)
+    {
+        myArray2[i][j]= myArray[i][j] + myArray1[i][j];
+    }
+}
+
+
+console.log(myArray);
+console.log(myArray1);
+console.log(myArray2);
+
+_____________________________________________________________
+
+Creating a 3 * 5 Matrix-
+
+var myArray = new Array(3);
+
+for(let i =0;i < 3;i++)
+{
+    myArray[i] = new Array(5);
+}
+
+var start = 1;
+
+for(i =0;i < 3;i++)
+{
+    for(j=0;j<5;j++)
+    {
+        myArray[i][j]= start;
+        start += 1;
+
+    }
+}
+
+console.log(myArray);
