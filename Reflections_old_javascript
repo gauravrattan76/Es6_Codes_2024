@@ -1,0 +1,45 @@
+var employee = function(Name,Gender,Age,Email)
+{
+    this.Name = Name;
+    this.Gender = Gender;
+    this.Age = Age;
+    this.Email = Email;
+}
+
+employee.prototype.getName = function(){
+    return this.Name;
+}
+
+employee.prototype.getGender = function(){
+    return this.Gender;
+}
+employee.prototype.getAge = function(){
+    return this.Age;
+}
+employee.prototype.getEmail = function(){
+    return this.Email;
+}
+
+var emp1 = new employee("Gaurav","Male",27,"gauravrattan76@gmail.com");
+for(var property in emp1)//we get all the properties and the functions here
+{
+    console.log(property);
+}
+
+_______________________________________________
+
+for(var property in emp1)
+{
+    console.log(property + "values are " + emp1[property]);//we get the properties functiions and the value
+}
+
+____________________________________________________
+
+to print separate-
+
+for(var property in emp1)
+{
+    if(typeof emp1[property] == "function"){
+        console.log(property + "property" +emp1[property]);
+    };
+}
