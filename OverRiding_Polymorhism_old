@@ -1,0 +1,18 @@
+function Employee(name){
+    this.Name = name;
+}
+
+Employee.prototype.getName = function(){//Normal method
+    return this.Name;
+}
+
+function addEmpDetail(){//here we override it
+    Employee.prototype.getName = function(){//overriding
+        return this.Name.toUpperCase();
+    }
+
+    var newemp1 =new Employee("rttan");
+    console.log(newemp1.getName());
+}
+
+addEmpDetail();
