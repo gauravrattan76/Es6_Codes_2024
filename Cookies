@@ -1,0 +1,43 @@
+Cookies are small text files that a browser stores in the visitor's computer. A cookie is basically a string of name-value pairs separated by semi-colons.
+
+How does a cookie look 
+color=red;expires=Fri, 5 Aug 2016 01:00:00 UTC;
+
+In the cookie string above we have 2 name-value pairs. 
+The expires attribute specifies when the cookie is going to expire. By default cookies are deleted when the current browser session ends. If you want to store the cookie on the client computer even after the browser session has ended then specify either expires or max-age attributes. The color attribute is set to "red".
+
+How to write a cookie : Use the document object's cookie property to write the cookie.
+document.cookie = "color=red;expires=Fri, 5 Aug 2016 01:00:00 UTC;"
+
+How to read a cookie : Use the document object's cookie property to read the cookie.
+var cookieString = document.cookie;
+
+Here is the complete example which remembers the user color preference
+<select id="ddlTheme" onchange="setColorCookie()">
+    <option value="Select Color">Select Color</option>
+    <option value="red">Red</option>
+    <option value="green">Green</option>
+    <option value="blue">Blue</option>
+</select>
+<script type="text/javascript">
+    window.onload = function ()
+    {
+        if (document.cookie.length != 0)
+        {
+            var nameValueArray = document.cookie.split("=");
+            document.getElementById("ddlTheme").value = nameValueArray[1];
+            document.bgColor = nameValueArray[1];
+        }
+    }
+
+    function setColorCookie()
+    {
+        var selectedValue = document.getElementById("ddlTheme").value;
+        if (selectedValue != "Select Color")
+        {
+            document.bgColor = selectedValue;
+            document.cookie = "color=" + selectedValue +
+                            ";expires=Fri, 5 Aug 2016 01:00:00 UTC;";
+        }
+    }
+</script>
