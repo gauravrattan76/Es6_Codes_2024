@@ -1,0 +1,75 @@
+// var employee = function(fname)
+// {
+//     this.Fname = fname;
+// }
+
+
+// var den = new employee("gaurav");//here we are calling the constructor function using the new keyword we get name as well as the _proto_
+// console.log(den);
+
+// var employee = function(fname)
+// {
+//     this.Fname = fname;
+// }
+
+
+// var den = Object.create(employee.prototype);//here we are not calling the constructor ..her we directly get the _proto_
+// console.log(den);
+
+
+var employee = {
+    fname:"gaurav",
+    lname:"rattan",
+    getFullName(){
+        return this.fname + this.lname;
+    }
+}
+
+
+var den = employee;//we dont need new keyword here as its already a object
+console.log(den);
+
+______________________________________________________________
+Change in one isntance doesnt effect the other
+
+var employee = function(fname)
+{
+    this.Fname = fname;
+}
+
+
+var den = new employee("gaurav");
+
+var den1 = new employee("rattan");
+den.Fname = "Ravi";
+
+console.log(den);
+console.log(den1);
+
+
+____________________________________________________
+
+where as with objects weget singleton
+
+
+
+
+
+var employee = {
+    fname:"gaurav",
+    lname:"rattan",
+    getFullName(){
+        return this.fname + this.lname;
+    }
+}
+
+
+var den = employee;
+den.fname="doggy";
+var red = employee;
+console.log(den);
+console.log(red);
+
+here we get the both the dossoes as change in one effects the other as we are getting a singleton
+
+
