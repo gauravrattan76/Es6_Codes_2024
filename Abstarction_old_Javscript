@@ -1,0 +1,20 @@
+var Shape = function(){
+    this.shapeName = "None";
+    throw new Error("can not create instance of circle class");//we can not create instance of the child now
+}
+
+Shape.prototype.drawShape = function(){
+    return "this is the method and the color is" + this.shapeName;
+}
+
+var Circle = function(shape)
+{
+    this.shapeName = shape;
+}
+
+Circle.prototype = Object.create(Shape.prototype);//inheriting without using the new keyword
+
+var red = new Circle("circle");
+console.log(red.drawShape());
+console.log(red instanceof Shape);
+console.log(red instanceof Circle);
