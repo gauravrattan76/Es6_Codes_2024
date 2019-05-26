@@ -1,0 +1,48 @@
+var employee = function(name)
+{
+    this.Name = name;
+}
+
+employee.prototype.GetName = function(){
+    return this.Name;
+}
+
+ var pEmployee= function(salary)
+ {
+     this.Salary = salary;
+ }
+
+//  pEmployee.prototype.printSal = function(){
+//      return this.Salary;
+//  }
+
+ pEmployee.prototype = new employee("gaurav");//here we are binding the child and parent relatiinship
+ var newpe = new pEmployee(235);
+ console.log(newpe instanceof employee);
+console.log(newpe instanceof pEmployee);
+
+
+____________________________________________________________
+
+var employee = function(name)
+{
+    this.Name = name;
+}
+
+employee.prototype.GetName = function(){
+    return this.Name;
+}
+
+ var pEmployee= function(salary)
+ {
+     this.Salary = salary;
+ }
+
+//  pEmployee.prototype.printSal = function(){
+//      return this.Salary;
+//  }
+
+ pEmployee.prototype = new employee("gaurav");
+ var newpe = new pEmployee(235);
+ console.log(newpe.hasOwnProperty('Name'));..hasOwnProperty tells if the property belongs to here on inherited
+console.log(newpe instanceof pEmployee);
