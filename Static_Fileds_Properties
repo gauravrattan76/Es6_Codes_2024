@@ -1,0 +1,37 @@
+An instance member belong to a specific instance. So if I create 3 instances (objects) there will be 3 copies of instance fields in memory where as there will ever be only one copy of a static field no matter how many instances we create. 
+
+var Circle = function(radius)
+{
+    this.Radius = radius;
+    Circle.PI = 3.14;//constructor function name to declare the same
+    this.calArea = function(){
+        return Circle.PI * radius * radius;
+    }
+}
+
+var cr1 = new Circle(23);
+console.log(cr1.calArea());
+
+1. Define a static member using the name of the constructor function.
+2. To invoke a static member use the name of the constructor function.
+3. To invoke an instance member use the instance of the constructor function. 
+
+__________________________________________________________________________________________________
+
+
+var Shape = function(name){
+
+    this.shapeName = name;
+
+    Shape.count = ++Shape.count || 1;
+    Shape.ShapeCount = function(){
+        return Shape.count;
+    }
+}
+
+var cir = new Shape("circle");
+var tri = new Shape("triangle");
+console.log(Shape.ShapeCount());
+
+
+we get the output as 2 as single instance of the variable countis created and it gets jeep on updating.
