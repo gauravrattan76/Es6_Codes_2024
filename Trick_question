@@ -10,3 +10,37 @@ setTimeout(() => {
  }
 
  console.log("fianl function");
+ 
+ 
+ uotput - 1t console, then for loop then next console and then the settimeout
+ 
+ ______________________________________________________________________
+ 
+ 
+ The issue is that JavaScript does NOT natively support method overloading. So, if it sees/parses two or more functions with a same name, it’ll just consider the last defined function and overwrite the previous ones.
+ 
+ 
+function addNum(a,b)
+{
+    return a + b;
+}
+
+var d = addNum(1,2);
+
+function addNum(a,b,c)
+{
+    return a + b +c;
+}
+
+var d1 = addNum(1,2,3);
+
+console.log(d);
+console.log(d1);
+
+
+
+The output will be 6.
+
+
+
+
