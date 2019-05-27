@@ -1,0 +1,12 @@
+console.log("Want to see what gets executed first");
+
+setTimeout(() => {
+    console.log("this should be called ssecond indeally")
+}, 0);
+
+ for(var i=0;i<=10;i++)
+ {
+     console.log(i);
+ }
+
+ console.log("fianl function");
