@@ -1,0 +1,29 @@
+
+The Map object holds key-value pairs and remembers the original insertion order of the keys. Any value (both objects and primitive values) may be used as either a key or a value.
+var myMap = new Map();
+myMap.set("fname","Gaurav");
+console.log("Size"+myMap.size);
+myMap.set("lname","Rattan");
+
+
+console.log(myMap.size);//gives the size only for the value value
+
+//we can assign objects as well
+
+
+var ob1 = {};
+var ob2 = {};
+
+myMap.set(ob1,23);
+myMap.set(ob2,35);
+console.log(myMap.size);//gives the size
+
+console.log(myMap.get("fname"));//gives the value for the key
+console.log(myMap.get(ob1));//gives the value for the key
+
+
+myMap.delete("fname");
+console.log(myMap.has("fname"));//returns true or false
+
+myMap.clear();
+console.log(myMap.size);//
