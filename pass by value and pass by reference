@@ -2,6 +2,32 @@
 
 Javascript has 5 data types that are passed by value: Boolean, null, undefined, String, and Number. We’ll call these primitive types.
 
+// var myArray = [1,2,3,4];
+// newArr = myArray;
+
+// console.log(myArray);
+// console.log(newArr);
+
+
+// // myArray.push(23);
+// myArray.length = 0;
+
+// console.log(myArray);//it will be cahnge the value for both as its passed by ference.
+// console.log(newArr);
+
+
+var oldstring = "Hi Gaurav";
+var newstring = oldstring;
+
+console.log(oldstring);
+console.log(newstring);
+
+oldstring = oldstring + "gaura";
+
+
+console.log(oldstring);
+console.log(newstring);//change in original no new change as its passed by value
+
 Javascript has 3 data types that are passed by reference: Array, Function, and Object. These are all technically Objects, so we’ll refer to them collectively as Objects.
 
 Primitive type variable like string,number are always pass as pass by value.
