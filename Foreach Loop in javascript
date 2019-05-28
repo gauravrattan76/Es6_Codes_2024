@@ -4,3 +4,71 @@ numbers.forEach(function(value,index,array)
 {
 console.log("Value" + value + "Index" + index+ "array" + array);
 })
+
+____________________________________
+
+var myArray = [1,23,44,12,89];
+
+myArray.forEach(function(v,i,a){
+    console.log("Value -" + v + "-Index -" + i + "-array-" + a);
+})
+
+
+Value -1-Index -0-array-1,23,44,12,89
+Value -23-Index -1-array-1,23,44,12,89
+Value -44-Index -2-array-1,23,44,12,89
+Value -12-Index -3-array-1,23,44,12,89
+Value -89-Index -4-array-1,23,44,12,89
+
+
+______________________________________________
+
+// var myArray = [1,23,44,12,89];
+
+// myArray.forEach(function(v,i,a){
+//     console.log("Value -" + v + "-Index -" + i + "-array-" + a);
+// })
+
+var myMap = new Map([["fname","gaurav"],["lname","Rattan"]]);
+
+
+myMap.forEach(function(value,key,callingMap)
+{
+    console.log("Value" + value + "key" + key);
+    console.log(myMap == callingMap);
+})
+
+
+var myset = new Set([2,4,5,6,11,89]);
+
+
+myset.forEach(function(value,key,callingSet)
+{
+    console.log("Value" + value + "key" + key);
+    console.log(myset == callingSet);
+})
+
+
+Map { 'fname' => 'gaurav', 'lname' => 'Rattan' }
+PS C:\Codes\Typescript_compiled_codes> node file.js
+Valuegauravkeyfname
+true
+ValueRattankeylname
+true
+PS C:\Codes\Typescript_compiled_codes> node file.js
+Valuegauravkeyfname
+true
+ValueRattankeylname
+true
+Value2key2
+true
+Value4key4
+true
+Value5key5
+true
+Value6key6
+true
+Value11key11
+true
+Value89key89
+true
