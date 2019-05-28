@@ -1,0 +1,67 @@
+var obj1 = {
+    "fname": "gaurav",
+    "lname": "rattan",
+    "age": 23,
+    printName(){
+        console.log("Hello");
+    }
+};
+for (var property in obj1) {
+    console.log(property);
+    console.log(obj1[property]);//gives me everything all the properties and functions
+}
+
+for (var property in obj1) {
+    if(typeof(obj1[property]) != "function"){
+        console.log(property);
+        console.log(obj1[property]);//will only get the properties
+    }
+    
+}
+
+____________________________________________
+
+var obj1 = {
+    "fname": "gaurav",
+    "lname": "rattan",
+    "age": 23,
+    printName(){
+        console.log("Hello");
+    }
+};
+
+var keys = Object.keys(obj1);
+var values = Object.values(obj1);
+
+console.log(keys);//get all the keys here
+console.log(values);//get all the values here
+
+
+____________________________________________
+
+
+Object.entries creates an array of arrays. Each inner array has two item. The first item is the property; the second item is the value.
+
+Here’s an example:
+
+const fruits = {
+  apple: 28,
+  orange: 17,
+  pear: 54,
+}
+
+const entries = Object.entries(fruits)
+console.log(entries)
+// [
+//   [apple, 28],
+//   [orange, 17],
+//   [pear, 54]
+// ]
+
+
+var arraofarray = Object.entries(obj1);
+
+for(var [key,val] of arraofarray)//use destructring here to get the keys and values here
+{
+    console.log(`The key is ${key} and the value is ${val}`);
+}
