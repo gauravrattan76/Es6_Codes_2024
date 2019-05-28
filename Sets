@@ -1,0 +1,62 @@
+A set is a collection of items which are unique i.e no element can be repeated. Set in ES6 are ordered: elements of the set can be iterated in the insertion order. 
+
+var mySet = new Set();
+var obj1 = {};
+var obj2 = {};
+console.log(mySet.size);
+
+mySet.add(12);
+
+console.log(mySet.size);
+
+
+mySet.add(12);
+console.log(mySet.size);//still the size remains same as 1
+mySet.add(obj1);//objects are not converted to strings so that they act unique
+mySet.add(obj2);
+console.log(mySet.size);//so we get all the objects even if they are equal
+
+var newset = new Set([1,2,3,4,5,6,7,8,2,3]);
+console.log(newset);
+console.log(newset.has(2));
+console.log(newset.has(23));
+console.log(newset.delete(7));
+console.log(newset);
+newset.clear();
+console.log(newset);
+
+
+_______________________________________________
+It returns an iterator object which contains an array having the entries of the set, in the insertion order.
+Syntax:
+set1.entries();
+
+Parameter:
+No parameters
+
+Returns: 
+It returns an iterator object that contains an
+array of [value, value] for every 
+element of the set, in the insertion order. 
+
+var set1 = new Set(); 
+  
+// adding element to the set 
+set1.add(50); 
+set1.add(30); 
+set1.add(40); 
+set1.add(20); 
+set1.add(10); 
+  
+// using entries to get iterator 
+var getEntriesArry = set1.entries(); 
+  
+// each iterator is array of [value, value] 
+// prints [50, 50] 
+console.log(getEntriesArry.next().value); 
+  
+// prints [30, 30] 
+console.log(getEntriesArry.next().value); 
+  
+// prints [40, 40] 
+console.log(getEntriesArry.next().value); 
