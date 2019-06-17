@@ -1,0 +1,20 @@
+class Human { 
+    name = "Gaurav";
+    private _age;//create private fields
+
+    get Age() { 
+        return this._age;
+    }
+
+   /**  set Age(value) { //initialise them here
+        this._age = value;
+    }
+    **/
+}
+
+let boy = new Human();
+document.write(boy.name);
+boy.Age = 35;
+document.write(boy.Age);
+boy.name = "Rattan";
+document.write(boy.name);
