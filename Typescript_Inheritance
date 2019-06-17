@@ -1,0 +1,50 @@
+class Dog{
+    constructor(age,breed)//constructor
+    {
+        this.age = age;
+        this.breed = breed;
+    }
+   calAge(){
+       return this.age + 23;
+   }
+}
+
+let puppy = new Dog(23,"Bulldog");
+console.log(typeof(puppy));
+console.log(typeof(Dog));
+console.log(puppy.age);
+console.log(puppy.calAge());
+
+_______________________________________________________
+
+class Dog{
+    constructor(age,breed)
+    {
+        this.age = age;
+        this.breed = breed;
+    }
+   calAge(){
+       return this.age + 23;
+   }
+}
+
+class BullDog extends Dog{
+    constructor(age,breed,legs){
+        super(age,breed);//calling the parent constructor
+        this.legs = legs;
+    }
+     calLegs(){
+        return super.calAge();//calling the parent method
+     }
+
+}
+
+
+let pp = new BullDog(23,"gen",34);
+console.log(pp.calLegs());
+
+__________________________________________________
+
+If we remove the constructor we get the below error message-
+
+Must call super constructor in derived class before accessing 'this' or returning from derived constructor
