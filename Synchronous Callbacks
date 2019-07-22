@@ -1,0 +1,27 @@
+Argument function can be called synchronously
+Simply taking a callback doesn't make a function asynchronous. There are many examples of functions that take a function argument but are not asynchronous. For example there's forEach in Array. It iterates over each item and calls the function once per item.
+
+This can be used among other things to calculate total value from a property of each item.
+
+1     var totalSize = 0;
+2     items.forEach((item) => {
+3         totalSize += item.size;
+4     });
+5     return totalSize;
+Calling the argument function is performed as part of normal step-by-step sequential execution of statements that make up the forEach implementation. Throwing an exception in the argument function would reveal a stack trace containing forEach and your function nested inside it.
+
+It is very important to forEach to operate this way. If the argument function would be called asynchronously, code like in the example would not work as expected. The results would be zero each time.
+
+____________________________________________________________________________________________
+
+Asynchronous function needs to perform an asynchronous operation
+For a function to be asynchronous it needs to perform an asynchronous operation. It needs to incorporate the argument callback in handling the results of this asynchronous operation. Only this way the function becomes asynchronous.
+
+For example a function reading contents of a file with the correct encoding can be implemented as an asynchronous function.
+
+1 function readFileAsUtf8(filename, callback)
+2     fs.readFile(filename, "utf8", function(err, data) =>  {
+3         callback(data);
+4     });
+5 }
+Your callback will not be called as part of the execution of readFileAsUtf8 function. It will be called only after the file contents have been read at some point in the future. It will be called asynchronously.
