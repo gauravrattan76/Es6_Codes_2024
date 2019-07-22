@@ -1,0 +1,109 @@
+
+
+Debounce and Throttle in Real Life Scenarios
+
+_____________________________________________________________
+Debounce-
+__________________________________
+Debounce and throttle are two programming techniques that can save the day when it comes to performance. It’s important to know when to use them — but also important to know when not to use them.
+Debounce and throttle are recommended to use on events that fire more often than you need them to. You may have come across scenarios like this when binding to mouse movements and window events such as scrolling, push notifications and Ajax calls.
+Debounce
+Debouncing enforces that a function not be called again until a certain amount of time has passed without it being called. For example, “execute this function only if 100 milliseconds have passed without it being called.”
+In other words: The debounce technique allows us to “group” multiple raised sequential functions into a single function.
+Throttle
+Throttling enforces a maximum number of times a function can be called over time. For example, “execute this function at most once every 100 milliseconds.”
+In other words: By using throttle, we don’t allow to our function to execute more than once every X milliseconds.
+Live demo performance implication
+I created some live demos to demonstrate the differences between debounce and throttle. In these demos, I am firing calls on the mouse drag event. The first demo is binding without debounce or throttle, the second is with debounce binding, and the last one is with throttle binding.
+Each time the WalkMe logo is dragged, a callback is called. In the top right corner, you can see the actual number of callback calls. In addition, I added a timeline chart to visualize the callback calls during the drag. Go ahead and try to drag the WalkMe logo to see the difference without debounce and with debounce/throttle.
+
+Regular binding to drag event
+
+Debouncing binding to drag event
+
+Throttling binding to drag event
+How to implement debounce throttle
+Debouncing implementation
+// as long as it continues to be invoked, it will not be triggered
+function debounce (func, interval) {
+  var timeout;
+  return function () {
+    var context = this, args = arguments;
+    var later = function () {
+      timeout = null;
+      func.apply(context, args);
+    };
+    clearTimeout(timeout);
+    timeout = setTimeout(later, interval || 200);
+  }
+}
+Throttling implementation
+// as long as it continues to be invoked, raise on every interval
+function throttle (func, interval) {
+  var timeout;
+  return function() {
+    var context = this, args = arguments;
+    var later = function () {
+      timeout = false;
+    };
+    if (!timeout) {
+      func.apply(context, args)
+      timeout = true;
+      setTimeout(later, interval)
+    }
+  }
+}
+And usage
+var myHeavyFunction = debounce(function() {
+  // do heavy things
+}, 250);
+window.addEventListener('mousemove', myHeavyFunction);
+Real life example
+Why and when do we need debounce or throttle?
+I used debounce in my application in the search module. I have an input text box, into which the user can type terms and search for data. Of course, when the search process ends, the results are rendered on the screen. I bind the keypress event of the input text box to fire the search process:
+
+The following figure depicts performance monitoring capture of state before using debounce. Notice that each time the keypress event is raised, it fires the search engine and renders the results on the screen. In fact, those results haven't been seen by the user, because they have been overridden by the subsequent results of the latest keypress event; only the latest results are rendered on the screen.
+
+Now, I’ve wrapped the search raising with debounce… And guess what?
+
+As we can see, the search process and the results rendering are called only once (when the user finished typing), and no unimportant heavy functions, such as layout rendering, memory handling, DOM-element- managing, have been called.
+
+summary without debounced search
+
+summary with debounced search
+When to use each
+Use debounce when you want your function to postpone its next execution until after X milliseconds have elapsed since the last time it was invoked.
+
+ Use throttle when you need to ensure that events fire at given intervals. Some use cases for each follow:
+Measure the scroll position of the page — The browser will fire the scroll binding event every single time the user scrolls, which can result in many events per scroll. If the binding event performs several repaints, this spells bad news for the end-user; layout reflows and repaints are expensive, especially when you are redrawing large parts of the view, as is the case when there is a scroll event.
+Wait until the user stops resizing the window — Window resize operations cause various child elements to update themselves by resizing and re-organizing themselves. By throttling, you can delay the resize events and fire fewer of those resizing events.
+Fire Ajax calls under control and avoid unnecessary network request handling— for example, in case of searching for external data, wait until the end-user stops typing by using debounce. If you are sending log data frequently, use throttle.
+Implementations in well known libraries
+The famous lodash.js library comes with debounce and throttle built in:
+$(window).on('resize', _.debounce(function(){
+    // do heavy things
+}, 150));
+$(window).on('scroll', _.throttle(function(){
+    // do heavy things
+}, 100));
+jQuery has implementation too:
+$('input:text').keyup( $.debounce( 250, function(){
+    // do heavy things
+}));
+$(window).scroll( $.throttle( 250, function(){
+    // do heavy things
+}));
+Angular also has its own implementation:
+<input type="text" name="userName"
+       ng-model="user.name" 
+       ng-model-options="{ debounce: 1000 }" />
+Here’s an article that explains how to use debounce and throttle with the npm library in React:
+function printChange(){
+   debounce(500, this.callAjax)
+}
+...
+<input type="text" onKeyUp={this.printChange.bind(this)}/>
+Even WPF joined to the party:
+Text="{Binding TopicsFilter,UpdateSourceTrigger=PropertyChanged,Delay=500}"
+
+
