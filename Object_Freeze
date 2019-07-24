@@ -1,0 +1,40 @@
+Object.freeze() which is used to freeze an object. Freezing an object does not allow new properties to be added to an object and prevents from removing or altering the existing properties. Object.freeze() preserves the enumerability, configurability, writability and the prototype of the object. It returns the passed object and does not create a frozen copy.
+
+Applications:
+
+Object.freeze() is used for freezing objects and arrays.
+Object.freeze() is used to make an object immutable.
+Syntax:
+
+Object.freeze(obj)
+Parameters Used:
+
+obj : It is the object which has to be freezed.
+Return Value:
+Object.freeze() returns the object that was passed to the function.
+
+Examples of the above function are provided below.
+
+Examples:
+
+Input : const obj1 = { property1: 'initial_data'};
+        const obj2 = Object.freeze(obj1);
+        obj2.property1 = 'new_data';
+        console.log(obj2.property1);
+
+Output : "initial_data"
+Explanation : In this example, the object “obj2” has been assigned property from object “obj1” and the properties of “obj1” are frozen therefore new property and values are prevented from being added to “obj2”.
+
+Input : var obj = { prop: function() {}, name: 'adam' };
+        console.log(obj);
+        obj.name = 'billy';
+        delete obj.prop;
+        console.log(obj);
+        var o = Object.freeze(obj);
+        obj.name = 'chris';
+        console.log(obj);
+
+Output : Object { prop: function () {}, name: "adam" }
+         Object { name: "billy" }
+         Object { name: "billy" }
+Explanation : In this example, the object “obj” has been assigned “prop: function” which has been later deleted since the object “obj wasn’t frozen. After that, a new object “o” has been assigned the frozen values of “obj” which prevented it from further updations.
