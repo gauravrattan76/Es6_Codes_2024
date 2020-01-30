@@ -1,0 +1,13 @@
+Closure_Disadvantages-
+____________________________________________________
+
+As long as closures are active, this memory cannot be garbage collected.
+
+
+As long asclosures are active, this memory cannot be garbage collected. Therefore, closures can lead to memory leaks if not used well.
+
+So to fix this in your program if there comes a point that you’re done using an element inside the closure then you need to set it to null.
+
+creating functions inside other functions lead to duplication in memory, potentially slowing down the application.
+
+Unless you need privacy, its more practical to use the module pattern to create new objects with shared methods.
