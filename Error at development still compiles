@@ -1,0 +1,11 @@
+ts file-
+
+
+var a: number;
+a = "gaurav";
+
+conosole.log(a);
+
+
+
+it will throw error at development time but still will get compiled if its a valid javascript.
