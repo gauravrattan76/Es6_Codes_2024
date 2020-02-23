@@ -1,0 +1,12 @@
+var add = function(a,b,c?,d =2)
+{
+    console.log(c);
+    console.log(d);
+    return a + b;
+}
+
+
+console.log(add(1,2,3));
+
+
+we can use the condition operator but it should be the last one or we can use the default operator
