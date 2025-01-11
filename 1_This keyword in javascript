@@ -1,0 +1,103 @@
+This points to object which invokes that function.
+____________________________________________
+in browser if we write
+
+Global Scope
+Whenever the this keyword is used outside of any function, it refers to the global object.
+
+While the global object is global in the Node.js environment, it's a window in the context of a web browser:
+
+console.log(this);
+
+it points to global object which is nothing but windows object on chrome, {} in node
+
+_____________________
+
+Function Context
+The method of invocation determines the value of the this keyword in a standard regular function:
+function a(){
+  console.log(this);  
+}
+
+a()
+
+again this points to global obhect that is window
+
+
+in case of striuct mode - it will be undefined
+
+
+in non strict mode -
+
+this substitution happens, it points to window object.
+
+
+___________________________________
+
+Inside objects-
+
+const person={
+    name: "gaurav",
+    printName :  function(){
+        console.log(this , this.name)
+    }
+}
+
+person.printName();
+
+
+
+if we use function declaration this pioints to object that invokes the function that is the object.
+
+
+__________________
+
+in case of arrau functions , they  dont have there own this.
+
+it refers to lexical this of enslcoing parent
+
+
+const person={
+    name: "gaurav",
+    printName :  () => {
+        console.log(this)
+    }
+}
+
+person.printName();
+
+
+this will be window only
+
+____________
+
+in arrow functions inside the normal function -
+
+const person={
+    name: "gaurav",
+    printName :
+        function(){
+       const y = () => {
+        console.log(this)
+        }
+            y();
+    }
+
+
+_______________
+
+
+Event Handlers
+In an addEventListener event handler, this refers to the element before the dot. This is the element that the event listener was added to trigger the event:
+
+const button = document.querySelector("button");
+
+button.addEventListener("click", function () {
+  console.log(this);
+});
+
+// OUTPUT  <button>click</button>
+
+person.printName();
+
+___________________________
