@@ -1,0 +1,167 @@
+Callback -
+
+Callback is a function which is passed as an argument to another function
+
+function readFile(){
+  setTimeout(() => {
+    console.log('we are reading the file here');
+    writeFile();
+  }, 2000);
+
+}
+
+
+function writeFile(){
+  console.log("we are writing the file data here");
+}
+
+
+readFile(writeFile);
+// writeFile();
+
+
+_______
+
+
+Promise helmsman removing call back hell-
+
+
+function readData(val) {
+  const promise = new Promise((resolve, reject) => {
+    if (val == 1) {
+      resolve('promise is reolved successfulluy')
+    }
+    else {
+      reject("we have an error")
+    }
+  })
+  return promise;
+}
+
+
+readData(2)
+.then((data) => console.log(data))
+.catch(err => console.log("err" + err))
+
+
+
+______________
+
+
+
+
+function readData(val) {
+  const promise = new Promise((resolve, reject) => {
+    if (val == 1) {
+      resolve('promise is reolved successfulluy')
+    }
+    else {
+      reject("we have an error")
+    }
+  })
+  return promise;
+}
+
+function print(){
+  readData(1)
+  .then((data) => console.log(data))
+  .catch(err => console.log("err" + err))
+  console.log("hello gaurav");
+}
+
+print();
+
+________________________
+
+// function readFile(){
+//   setTimeout(() => {
+//     console.log('we are reading the file here');
+//     writeFile();
+//   }, 2000);
+
+// }
+
+
+// function writeFile(){
+//   console.log("we are writing the file data here");
+// }
+
+
+// readFile(writeFile);
+// // writeFile();
+
+
+// function readData(val) {
+//   const promise = new Promise((resolve, reject) => {
+//     if (val == 1) {
+//       setTimeout(() => {
+//         resolve('promise is reolved successfulluy')
+//       }, 2000);
+      
+//     }
+//     else {
+//       reject("we have an error")
+//     }
+//   })
+//   return promise;
+// }
+
+// function print(){
+//   readData(1)
+//   .then((data) => console.log(data))
+//   .catch(err => console.log("err" + err))
+//   console.log("hello gaurav");
+// }
+
+// print();
+
+function readData(val) {
+  const promise = new Promise((resolve, reject) => {
+    if (val == 1) {
+      setTimeout(() => {
+        resolve('promise is reolved successfulluy')
+      }, 5000);
+      
+    }
+    else {
+      reject("we have an error")
+    }
+  })
+  return promise;
+}
+
+function readDat1(val) {
+  const promise = new Promise((resolve, reject) => {
+    if (val == 1) {
+      setTimeout(() => {
+        resolve('promise is reolved successfulluy')
+      }, 2000);
+      
+    }
+    else {
+      reject("we have an error from 2")
+    }
+  })
+  return promise;
+}
+
+async function print(){
+  try{
+ const data = await readData(4)
+ console.log(data);
+ const data2 = await readDat1(5);
+ console.log(data2);
+  console.log("hello gaurav will be called at last");
+  }
+ catch(error)
+ {
+  console.log(error)
+ }
+}
+
+print();
+
+
+
+
+
