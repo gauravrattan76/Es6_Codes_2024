@@ -1,0 +1,327 @@
+Code samples -
+__________________
+
+Promise.all-
+
+Promise.all() takes an array (or iterable) of promises and returns a single promise that resolves when all of the input promises have resolved.
+
+const promise1 = new Promise((resolve, reject) =>{
+   setTimeout(() => {
+      resolve("promise 1 resolved");
+   }, 500);
+})
+const promise2 = new Promise((resolve, reject) =>{
+   setTimeout(() => {
+     resolve("promise 2 is resolved")
+   }, 1000);
+})
+
+const promise3 = new Promise((resolve, reject) =>{
+   setTimeout(() => {
+      resolve("promise 3 resolved");
+   }, 2000);
+})
+
+
+Promise.all([promise1,promise2,promise3])
+.then(res =>  console.log(res))
+.catch(ex => console.log(ex))
+
+
+
+
+Output-
+
+We get an array of responses if all are resolved
+
+[ 'promise 1 resolved', 'promise 2 resolved', 'promise 3 resolved' ]
+
+———————————————————
+
+If any of the promises reject, Promise.all() will reject immediately with the reason of the first promise that rejects.
+
+const promise1 = new Promise((resolve, reject) =>{
+   setTimeout(() => {
+      resolve("promise 1 resolved");
+   }, 500);
+})
+const promise2 = new Promise((resolve, reject) =>{
+   setTimeout(() => {
+     reject("promise 2 is rejected")
+   }, 1000);
+})
+
+const promise3 = new Promise((resolve, reject) =>{
+   setTimeout(() => {
+      resolve("promise 3 resolved");
+   }, 2000);
+})
+
+
+Promise.all([promise1,promise2,promise3])
+.then(res =>  console.log(res))
+.catch(ex => console.log(ex))
+
+——————————
+
+Outputs -
+
+promise 2 is rejected
+
+____________________
+Promise.allSettled()
+
+
+Promise.allSettled() returns a promise that resolves when all input promises have settled (either resolved or rejected), and it gives you the results of all promises.
+
+
+Use Case: When you want to wait for all promises to finish (whether they succeed or fail) and you want to know the outcome of each.
+___________________________
+
+
+const promise1 = new Promise((resolve, reject) =>{
+   setTimeout(() => {
+      resolve("promise 1 resolved");
+   }, 500);
+})
+const promise2 = new Promise((resolve, reject) =>{
+   setTimeout(() => {
+     resolve("promise 2 is resolved")
+   }, 1000);
+})
+
+const promise3 = new Promise((resolve, reject) =>{
+   setTimeout(() => {
+      resolve("promise 3 resolved");
+   }, 2000);
+})
+
+
+Promise.allSettled([promise1,promise2,promise3])
+.then(res =>  console.log(res))
+.catch(ex => console.log(ex))
+
+
+
+Output -
+
+
+Array of object-
+Has status and value field
+
+[
+  { status: 'fulfilled', value: 'promise 1 resolved' },
+  { status: 'fulfilled', value: 'promise 2 is resolved' },
+  { status: 'fulfilled', value: 'promise 3 resolved' }
+]
+
+________________________________________
+Imp to notice-
+
+const promise1 = new Promise((resolve, reject) =>{
+   setTimeout(() => {
+      resolve("promise 1 resolved");
+   }, 500);
+})
+const promise2 = new Promise((resolve, reject) =>{
+   setTimeout(() => {
+     reject("promise 2 is rejected")
+   }, 1000);
+})
+
+const promise3 = new Promise((resolve, reject) =>{
+   setTimeout(() => {
+      resolve("promise 3 resolved");
+   }, 2000);
+})
+
+
+Promise.allSettled([promise1,promise2,promise3])
+.then(res =>  console.log(res))
+.catch(ex => console.log(ex))
+
+
+Output -
+
+[
+  { status: 'fulfilled', value: 'promise 1 resolved' },
+  { status: 'rejected', reason: 'promise 2 is rejected' },
+  { status: 'fulfilled', value: 'promise 3 resolved' }
+]
+
+____________________
+
+Promise.race -
+
+
+Promise.race() takes an array (or iterable) of promises and returns a promise that resolves or rejects as soon as the first promise resolves or rejects.
+It only cares about the first promise to resolve or reject, and ignores the others.
+
+
+const promise1 = new Promise((resolve, reject) =>{
+   setTimeout(() => {
+      resolve("promise 1 resolved");
+   }, 800);
+})
+const promise2 = new Promise((resolve, reject) =>{
+   setTimeout(() => {
+     reject("promise 2 is rejected")
+   }, 300);
+})
+
+const promise3 = new Promise((resolve, reject) =>{
+   setTimeout(() => {
+      resolve("promise 3 resolved");
+   }, 1000);
+})
+
+
+Promise.race([promise1,promise2,promise3])
+.then(res =>  console.log(res))
+.catch(ex => console.log(ex))
+
+
+Output -
+
+promise 2 is rejected
+
+
+___________________
+
+promise.any-
+
+Promise.any() takes an array (or iterable) of promises and returns a promise that resolves as soon as any of the input promises resolves.
+
+const promise1 = new Promise((resolve, reject) =>{
+   setTimeout(() => {
+      resolve("promise 1 resolved");
+   }, 800);
+})
+const promise2 = new Promise((resolve, reject) =>{
+   setTimeout(() => {
+     resolve("promise 2 is resolved")
+   }, 300);
+})
+
+const promise3 = new Promise((resolve, reject) =>{
+   setTimeout(() => {
+      resolve("promise 3 resolved");
+   }, 1000);
+})
+
+
+Promise.any([promise1,promise2,promise3])
+.then(res =>  console.log(res))
+.catch(ex => console.log(ex))
+
+
+
+Output -
+
+Returns first resolved
+
+
+_______________
+
+
+const promise1 = new Promise((resolve, reject) =>{
+   setTimeout(() => {
+      resolve("promise 1 resolved");
+   }, 800);
+})
+const promise2 = new Promise((resolve, reject) =>{
+   setTimeout(() => {
+     reject("promise 2 is rejected")
+   }, 300);
+})
+
+const promise3 = new Promise((resolve, reject) =>{
+   setTimeout(() => {
+      resolve("promise 3 resolved");
+   }, 1000);
+})
+
+
+Promise.any([promise1,promise2,promise3])
+.then(res =>  console.log(res))
+.catch(ex => console.log(ex))
+
+
+
+Output-
+
+Promise 1 is resolved , shoes the first resolved one 
+——————————
+
+
+const promise1 = new Promise((resolve, reject) =>{
+   setTimeout(() => {
+      reject("promise 1 rejcted");
+   }, 800);
+})
+const promise2 = new Promise((resolve, reject) =>{
+   setTimeout(() => {
+     reject("promise 2 is rejected")
+   }, 300);
+})
+
+const promise3 = new Promise((resolve, reject) =>{
+   setTimeout(() => {
+      resolve("promise 3 resolved");
+   }, 1000);
+})
+
+
+Promise.any([promise1,promise2,promise3])
+.then(res =>  console.log(res))
+.catch(ex => console.log(ex))
+
+
+Output -
+
+promise 3 resolved
+
+________________
+
+If all are reject then  returns - 
+
+If all of the promises reject, Promise.any() rejects with an AggregateError.
+
+
+const promise1 = new Promise((resolve, reject) =>{
+   setTimeout(() => {
+      reject("promise 1 rejcted");
+   }, 800);
+})
+const promise2 = new Promise((resolve, reject) =>{
+   setTimeout(() => {
+     reject("promise 2 is rejected")
+   }, 300);
+})
+
+const promise3 = new Promise((resolve, reject) =>{
+   setTimeout(() => {
+      reject("promise 3 reject");
+   }, 1000);
+})
+
+
+Promise.any([promise1,promise2,promise3])
+.then(res =>  console.log(res))
+.catch(ex => console.log(ex))
+
+Output-
+
+[AggregateError: All promises were rejected] {
+  [errors]: [ 'promise 1 rejcted', 'promise 2 is rejected', 'promise 3 reject' ]
+}
+
+
+___________________
+
+
+Key Differences
+* Promise.all(): Resolves when all promises resolve, rejects if any promise rejects.
+* Promise.allSettled(): Resolves when all promises settle (either resolve or reject) and provides information about each promise.
+* Promise.any(): Resolves when the first promise resolves, rejects if all promises reject.
+* Promise.race(): Resolves or rejects as soon as the first promise resolves or rejects.
