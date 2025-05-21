@@ -1,0 +1,26 @@
+function myFact() {
+    const myObj = {};
+    return function fact(n) {
+        if (n in myObj) {
+            console.log('we ae returning the cached value')
+            return myObj[n]
+        }
+        if (n === 0 || n === 1) return 1;
+        let res = n * fact(n - 1)
+        myObj[n] = res;
+        return myObj[n];
+    }
+}
+
+
+const res = myFact();
+console.log(res(3))
+console.log(res(4))
+console.log(res(3))
+
+
+____________
+
+output will be - 6
+
+the it has cached value for 3 in object so run only one time and return - 24  and 3 from cache.
